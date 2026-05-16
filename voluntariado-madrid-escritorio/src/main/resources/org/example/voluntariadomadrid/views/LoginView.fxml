@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Contenedor principal que ocupa toda la ventana -->
+
+<BorderPane prefHeight="600" prefWidth="900" style="-fx-background-color: linear-gradient(to bottom right, #fa8521, #6eaf37);;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.voluntariadomadrid.views.LoginController">
+
+    <!-- Panel central con el formulario de login -->
+    <center>
+        <VBox alignment="CENTER" maxWidth="380" spacing="16" style="-fx-background-color: white;                      -fx-padding: 40;                      -fx-background-radius: 12;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+
+            <!-- Titulo principal -->
+            <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;" text="Voluntariado Madrid" />
+
+            <!-- Subtitulo -->
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #666;" text="Accede a tu organizacion" />
+
+            <!-- Separador visual -->
+            <Region prefHeight="8" />
+
+            <!-- Campo de email -->
+            <VBox spacing="4">
+                <Label style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Correo electronico" />
+                <TextField fx:id="emailField" promptText="correo@organizacion.es" style="-fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 6;                                   -fx-border-color: #ddd; -fx-border-radius: 6;" />
+            </VBox>
+
+            <!-- Campo de contraseña -->
+            <VBox spacing="4">
+                <Label style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Contraseña" />
+                <PasswordField fx:id="passwordField" promptText="Tu contraseña" style="-fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 6;                                       -fx-border-color: #ddd; -fx-border-radius: 6;" />
+            </VBox>
+
+            <!-- Mensaje de error (oculto por defecto) -->
+            <Label fx:id="errorLabel" style="-fx-text-fill: #e53935; -fx-font-size: 13px;" text="" visible="false" wrapText="true" />
+
+            <!-- Boton de login -->
+            <Button fx:id="loginButton" maxWidth="Infinity" onAction="#handleLogin" style="-fx-background-color: #3f51b5; -fx-text-fill: white;                            -fx-font-size: 14px; -fx-font-weight: bold;                            -fx-padding: 12; -fx-background-radius: 6;                            -fx-cursor: hand;" text="Iniciar sesion" />
+
+            <!-- Separador -->
+            <Region prefHeight="4" />
+
+            <!-- Enlace para registrar nueva organizacion -->
+            <HBox alignment="CENTER" spacing="4">
+                <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="No tienes cuenta?" />
+                <Hyperlink onAction="#handleGoToRegister" style="-fx-font-size: 13px; -fx-text-fill: #3f51b5;" text="Registra tu organizacion" />
+            </HBox>
+         <BorderPane.margin>
+            <Insets bottom="20.0" top="20.0" />
+         </BorderPane.margin>
+
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.voluntariadomadrid.views.offers.NewOfferController"
+      spacing="14"
+      style="-fx-background-color: white; -fx-padding: 32;
+             -fx-background-radius: 12; -fx-min-width: 480;">
+
+    <Label fx:id="tituloFormulario"
+           text="Nueva oferta"
+           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+
+    <Label text="Rellena los datos de la oferta de voluntariado"
+           style="-fx-font-size: 13px; -fx-text-fill: #666;"/>
+
+    <Region prefHeight="4"/>
+
+    <!-- Titulo -->
+    <VBox spacing="4">
+        <Label text="Titulo de la oferta"
+               style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+        <TextField fx:id="tituloField"
+                   promptText="Ej: Reparto de alimentos"
+                   style="-fx-font-size: 14px; -fx-padding: 10;
+                          -fx-background-radius: 6;
+                          -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+    </VBox>
+
+    <!-- Descripcion -->
+    <VBox spacing="4">
+        <Label text="Descripcion"
+               style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+        <TextArea fx:id="descripcionField"
+                  promptText="Describe la actividad, requisitos, horario..."
+                  prefRowCount="3"
+                  wrapText="true"
+                  style="-fx-font-size: 14px; -fx-padding: 10;
+                         -fx-background-radius: 6;
+                         -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+    </VBox>
+
+    <!-- Categoria y plazas en la misma fila -->
+    <HBox spacing="12">
+
+        <VBox spacing="4" HBox.hgrow="ALWAYS">
+            <Label text="Categoria"
+                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+            <ComboBox fx:id="categoriaCombo"
+                      maxWidth="Infinity"
+                      style="-fx-font-size: 14px; -fx-padding: 4;"/>
+        </VBox>
+
+        <VBox spacing="4" prefWidth="120">
+            <Label text="Plazas disponibles"
+                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+            <TextField fx:id="plazasField"
+                       promptText="Ej: 10"
+                       style="-fx-font-size: 14px; -fx-padding: 10;
+                              -fx-background-radius: 6;
+                              -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+        </VBox>
+
+    </HBox>
+
+    <!-- Direccion con boton de geocodificacion -->
+    <VBox spacing="4">
+        <Label text="Direccion de la actividad"
+               style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+        <HBox spacing="8">
+            <TextField fx:id="direccionField"
+                       promptText="Calle, numero, municipio, Madrid"
+                       HBox.hgrow="ALWAYS"
+                       style="-fx-font-size: 14px; -fx-padding: 10;
+                          -fx-background-radius: 6;
+                          -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+            <Button fx:id="btnVerificar"
+                    text="Verificar"
+                    onAction="#handleVerificarDireccion"
+                    style="-fx-background-color: #e3f2fd; -fx-text-fill: #1565c0;
+                       -fx-font-size: 13px; -fx-font-weight: bold;
+                       -fx-padding: 10 16; -fx-background-radius: 6;
+                       -fx-cursor: hand;"/>
+        </HBox>
+        <!-- Muestra las coordenadas obtenidas tras verificar -->
+        <Label fx:id="coordsLabel"
+               text=""
+               style="-fx-font-size: 12px; -fx-text-fill: #43a047;"/>
+    </VBox>
+
+    <!-- Fechas en la misma fila -->
+    <HBox spacing="12">
+
+        <VBox spacing="4" HBox.hgrow="ALWAYS">
+            <Label text="Fecha de inicio (dd/MM/yyyy)"
+                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+            <TextField fx:id="fechaInicioField"
+                       promptText="01/06/2026"
+                       style="-fx-font-size: 14px; -fx-padding: 10;
+                              -fx-background-radius: 6;
+                              -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+        </VBox>
+
+        <VBox spacing="4" HBox.hgrow="ALWAYS">
+            <Label text="Fecha de fin (dd/MM/yyyy)"
+                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+            <TextField fx:id="fechaFinField"
+                       promptText="30/06/2026"
+                       style="-fx-font-size: 14px; -fx-padding: 10;
+                              -fx-background-radius: 6;
+                              -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+        </VBox>
+
+    </HBox>
+
+    <!-- Error -->
+    <Label fx:id="errorLabel"
+           text=""
+           wrapText="true"
+           style="-fx-text-fill: #e53935; -fx-font-size: 13px;"
+           visible="false"/>
+
+    <!-- Botones -->
+    <HBox spacing="12" alignment="CENTER_RIGHT"
+          style="-fx-padding: 8 0 0 0;">
+
+        <Button text="Cancelar"
+                onAction="#handleCancelar"
+                style="-fx-background-color: transparent; -fx-text-fill: #666;
+                       -fx-font-size: 13px; -fx-padding: 10 20;
+                       -fx-border-color: #ddd; -fx-border-radius: 6;
+                       -fx-background-radius: 6; -fx-cursor: hand;"/>
+
+        <Button fx:id="saveButton"
+                text="Guardar oferta"
+                onAction="#handleGuardar"
+                style="-fx-background-color: #3f51b5; -fx-text-fill: white;
+                       -fx-font-size: 13px; -fx-font-weight: bold;
+                       -fx-padding: 10 20; -fx-background-radius: 6;
+                       -fx-cursor: hand;"/>
+    </HBox>
+
+</VBox>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Contenedor principal centrado en la ventana -->
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.voluntariadomadrid.views.RegisterOrgController"
+            prefWidth="900" prefHeight="600"
+            style="-fx-background-color: #f4f6f8;">
+
+    <center>
+        <!-- Scroll por si la ventana es pequeña -->
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background: transparent; -fx-background-color: transparent;">
+            <content>
+                <VBox alignment="CENTER" spacing="0"
+                      style="-fx-padding: 40 0 40 0;">
+
+                    <!-- Tarjeta del formulario -->
+                    <VBox spacing="16" maxWidth="480"
+                          style="-fx-background-color: white;
+                                 -fx-padding: 40;
+                                 -fx-background-radius: 12;
+                                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+
+                        <!-- Titulo -->
+                        <Label text="Registra tu organizacion"
+                               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+
+                        <!-- Subtitulo -->
+                        <Label text="Crea tu cuenta de administrador y tu organizacion"
+                               wrapText="true"
+                               style="-fx-font-size: 13px; -fx-text-fill: #666;"/>
+
+                        <Region prefHeight="8"/>
+
+                        <!-- Separador de seccion -->
+                        <Label text="DATOS PERSONALES"
+                               style="-fx-font-size: 11px; -fx-font-weight: bold;
+                                      -fx-text-fill: #3f51b5;"/>
+
+                        <!-- Campo nombre admin -->
+                        <VBox spacing="4">
+                            <Label text="Tu nombre completo"
+                                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                            <TextField fx:id="nombreAdminField"
+                                       promptText="Nombre Apellidos"
+                                       style="-fx-font-size: 14px; -fx-padding: 10;
+                                              -fx-background-radius: 6;
+                                              -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+                        </VBox>
+
+                        <!-- Campo email -->
+                        <VBox spacing="4">
+                            <Label text="Correo electronico"
+                                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                            <TextField fx:id="emailField"
+                                       promptText="correo@organizacion.es"
+                                       style="-fx-font-size: 14px; -fx-padding: 10;
+                                              -fx-background-radius: 6;
+                                              -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+                        </VBox>
+
+                        <!-- Campo contraseña -->
+                        <VBox spacing="4">
+                            <Label text="Contraseña"
+                                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                            <PasswordField fx:id="passwordField"
+                                           promptText="Minimo 6 caracteres"
+                                           style="-fx-font-size: 14px; -fx-padding: 10;
+                                                  -fx-background-radius: 6;
+                                                  -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+                        </VBox>
+
+                        <!-- Campo confirmar contraseña -->
+                        <VBox spacing="4">
+                            <Label text="Confirmar contraseña"
+                                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                            <PasswordField fx:id="confirmPasswordField"
+                                           promptText="Repite tu contraseña"
+                                           style="-fx-font-size: 14px; -fx-padding: 10;
+                                                  -fx-background-radius: 6;
+                                                  -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+                        </VBox>
+
+                        <Region prefHeight="4"/>
+
+                        <!-- Separador de seccion -->
+                        <Label text="DATOS DE LA ORGANIZACION"
+                               style="-fx-font-size: 11px; -fx-font-weight: bold;
+                                      -fx-text-fill: #3f51b5;"/>
+
+                        <!-- Campo nombre organizacion -->
+                        <VBox spacing="4">
+                            <Label text="Nombre de la organizacion"
+                                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                            <TextField fx:id="nombreOrgField"
+                                       promptText="Nombre de tu organizacion"
+                                       style="-fx-font-size: 14px; -fx-padding: 10;
+                                              -fx-background-radius: 6;
+                                              -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+                        </VBox>
+
+                        <!-- Campo descripcion organizacion -->
+                        <VBox spacing="4">
+                            <Label text="Descripcion"
+                                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                            <TextArea fx:id="descripcionOrgField"
+                                      promptText="Describe brevemente tu organizacion y su actividad"
+                                      prefRowCount="3"
+                                      wrapText="true"
+                                      style="-fx-font-size: 14px; -fx-padding: 10;
+                                             -fx-background-radius: 6;
+                                             -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+                        </VBox>
+
+                        <!-- Mensaje de error -->
+                        <Label fx:id="errorLabel"
+                               text=""
+                               wrapText="true"
+                               style="-fx-text-fill: #e53935; -fx-font-size: 13px;"
+                               visible="false"/>
+
+                        <!-- Boton de registro -->
+                        <Button fx:id="registerButton"
+                                text="Crear organizacion"
+                                maxWidth="Infinity"
+                                onAction="#handleRegister"
+                                style="-fx-background-color: #3f51b5; -fx-text-fill: white;
+                                       -fx-font-size: 14px; -fx-font-weight: bold;
+                                       -fx-padding: 12; -fx-background-radius: 6;
+                                       -fx-cursor: hand;"/>
+
+                        <!-- Enlace para volver al login -->
+                        <HBox alignment="CENTER" spacing="4">
+                            <Label text="Ya tienes cuenta?"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #666;"/>
+                            <Hyperlink text="Inicia sesion"
+                                       onAction="#handleGoToLogin"
+                                       style="-fx-font-size: 13px; -fx-text-fill: #3f51b5;"/>
+                        </HBox>
+
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

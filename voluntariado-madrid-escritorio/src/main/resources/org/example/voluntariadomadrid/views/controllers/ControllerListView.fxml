@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Vista principal de gestion de controladores -->
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.voluntariadomadrid.views.controllers.ControllerListController"
+      spacing="0"
+      style="-fx-background-color: #f4f6f8; -fx-padding: 32;">
+
+    <!-- Cabecera con titulo y boton de crear -->
+    <HBox alignment="CENTER_LEFT" spacing="16"
+          style="-fx-padding: 0 0 24 0;">
+
+        <VBox spacing="4" HBox.hgrow="ALWAYS">
+            <Label text="Controladores"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+            <Label text="Usuarios con acceso a la aplicacion de escritorio"
+                   style="-fx-font-size: 13px; -fx-text-fill: #666;"/>
+        </VBox>
+
+        <!-- Boton para abrir el formulario de nuevo controlador -->
+        <Button fx:id="btnNuevoControlador"
+                text="+ Nuevo controlador"
+                onAction="#handleNuevoControlador"
+                style="-fx-background-color: #3f51b5; -fx-text-fill: white;
+                       -fx-font-size: 13px; -fx-font-weight: bold;
+                       -fx-padding: 10 20; -fx-background-radius: 6;
+                       -fx-cursor: hand;"/>
+    </HBox>
+
+    <!-- Mensaje de estado (cargando, sin resultados, error) -->
+    <Label fx:id="statusLabel"
+           text="Cargando controladores..."
+           style="-fx-font-size: 13px; -fx-text-fill: #666; -fx-padding: 0 0 12 0;"
+           visible="true"/>
+
+    <!-- Tabla de controladores -->
+    <TableView fx:id="tableControladores"
+               VBox.vgrow="ALWAYS"
+               style="-fx-background-color: white; -fx-background-radius: 10;">
+
+        <columns>
+
+            <!-- Columna nombre -->
+            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="200"/>
+
+            <!-- Columna email -->
+            <TableColumn fx:id="colEmail" text="Correo electronico" prefWidth="240"/>
+
+            <!-- Columna estado activo/inactivo -->
+            <TableColumn fx:id="colEstado" text="Estado" prefWidth="100"/>
+
+            <!-- Columna fecha de creacion -->
+            <TableColumn fx:id="colFecha" text="Fecha de alta" prefWidth="140"/>
+
+            <!-- Columna con botones de accion -->
+            <TableColumn fx:id="colAcciones" text="Acciones" prefWidth="140"/>
+
+        </columns>
+
+        <!-- Mensaje cuando la tabla esta vacia -->
+        <placeholder>
+            <Label text="No hay controladores creados todavia."
+                   style="-fx-text-fill: #999; -fx-font-size: 13px;"/>
+        </placeholder>
+
+    </TableView>
+
+</VBox>

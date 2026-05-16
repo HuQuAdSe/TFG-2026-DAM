@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- Contenedor principal que divide la pantalla en dos: menu izquierdo y contenido derecho -->
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.voluntariadomadrid.views.DashboardController"
+      prefWidth="900" prefHeight="600">
+
+    <!-- MENU LATERAL IZQUIERDO -->
+    <VBox prefWidth="220" spacing="4"
+          style="-fx-background-color: #1a1a2e; -fx-padding: 0;">
+
+        <!-- Cabecera del menu con nombre de la organizacion -->
+        <VBox spacing="4" style="-fx-padding: 20 16 20 16; -fx-background-color: #16213e;">
+            <Label text="Voluntariado Madrid"
+                   style="-fx-font-size: 13px; -fx-text-fill: #8892b0; -fx-font-weight: bold;"/>
+            <Label fx:id="orgNameLabel"
+                   text="Cargando..."
+                   wrapText="true"
+                   style="-fx-font-size: 15px; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Label fx:id="userRoleLabel"
+                   text=""
+                   style="-fx-font-size: 12px; -fx-text-fill: #8892b0;"/>
+        </VBox>
+
+        <!-- Separador -->
+        <Region prefHeight="8"/>
+
+        <!-- Botones de navegacion -->
+        <VBox spacing="2" style="-fx-padding: 0 8 0 8;">
+
+            <!-- Boton Inicio (visible para todos) -->
+            <Button fx:id="btnInicio"
+                    text="  Inicio"
+                    maxWidth="Infinity"
+                    onAction="#handleInicio"
+                    style="-fx-background-color: #3f51b5; -fx-text-fill: white;
+                           -fx-font-size: 14px; -fx-padding: 10 16;
+                           -fx-background-radius: 6; -fx-cursor: hand;
+                           -fx-alignment: CENTER-LEFT;"/>
+
+            <!-- Boton Ofertas (visible para todos) -->
+            <Button fx:id="btnOfertas"
+                    text="  Ofertas de voluntariado"
+                    maxWidth="Infinity"
+                    onAction="#handleOfertas"
+                    style="-fx-background-color: transparent; -fx-text-fill: #8892b0;
+                           -fx-font-size: 14px; -fx-padding: 10 16;
+                           -fx-background-radius: 6; -fx-cursor: hand;
+                           -fx-alignment: CENTER-LEFT;"/>
+
+            <!-- Boton Voluntarios inscritos (visible para todos) -->
+            <Button fx:id="btnVoluntarios"
+                    text="  Voluntarios inscritos"
+                    maxWidth="Infinity"
+                    onAction="#handleVoluntarios"
+                    style="-fx-background-color: transparent; -fx-text-fill: #8892b0;
+                           -fx-font-size: 14px; -fx-padding: 10 16;
+                           -fx-background-radius: 6; -fx-cursor: hand;
+                           -fx-alignment: CENTER-LEFT;"/>
+
+            <!-- Boton Controladores (solo visible para admin) -->
+            <Button fx:id="btnControladores"
+                    text="  Controladores"
+                    maxWidth="Infinity"
+                    onAction="#handleControladores"
+                    style="-fx-background-color: transparent; -fx-text-fill: #8892b0;
+                           -fx-font-size: 14px; -fx-padding: 10 16;
+                           -fx-background-radius: 6; -fx-cursor: hand;
+                           -fx-alignment: CENTER-LEFT;"/>
+
+            <!-- Boton Analiticas (visible para todos) -->
+            <Button fx:id="btnAnaliticas"
+                    text="  Analiticas"
+                    maxWidth="Infinity"
+                    onAction="#handleAnaliticas"
+                    style="-fx-background-color: transparent; -fx-text-fill: #8892b0;
+                           -fx-font-size: 14px; -fx-padding: 10 16;
+                           -fx-background-radius: 6; -fx-cursor: hand;
+                           -fx-alignment: CENTER-LEFT;"/>
+
+            <!-- Boton Mi Organizacion (visible para todos) -->
+            <Button fx:id="btnOrganizacion"
+                    text="  Mi organizacion"
+                    maxWidth="Infinity"
+                    onAction="#handleOrganizacion"
+                    style="-fx-background-color: transparent; -fx-text-fill: #8892b0;
+                           -fx-font-size: 14px; -fx-padding: 10 16;
+                           -fx-background-radius: 6; -fx-cursor: hand;
+                           -fx-alignment: CENTER-LEFT;"/>
+        </VBox>
+
+        <!-- Espaciador que empuja el boton de cerrar sesion hacia abajo -->
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <!-- Boton de cerrar sesion en la parte inferior del menu -->
+        <VBox style="-fx-padding: 8 8 16 8;">
+            <Button text="  Cerrar sesion"
+                    maxWidth="Infinity"
+                    onAction="#handleCerrarSesion"
+                    style="-fx-background-color: transparent; -fx-text-fill: #e57373;
+                           -fx-font-size: 14px; -fx-padding: 10 16;
+                           -fx-background-radius: 6; -fx-cursor: hand;
+                           -fx-alignment: CENTER-LEFT;"/>
+        </VBox>
+
+    </VBox>
+
+    <!-- AREA DE CONTENIDO DERECHO -->
+    <!-- Aqui se cargan dinamicamente las vistas de cada seccion -->
+    <StackPane fx:id="contentArea"
+               HBox.hgrow="ALWAYS"
+               style="-fx-background-color: #f4f6f8;"/>
+
+</HBox>

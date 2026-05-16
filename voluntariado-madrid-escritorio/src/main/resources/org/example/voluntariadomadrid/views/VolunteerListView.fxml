@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Vista de voluntarios inscritos por oferta -->
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.voluntariadomadrid.views.VolunteerListController"
+      spacing="0"
+      style="-fx-background-color: #f4f6f8; -fx-padding: 32;">
+
+    <!-- Cabecera con titulo -->
+    <VBox spacing="4" style="-fx-padding: 0 0 24 0;">
+        <Label text="Voluntarios inscritos"
+               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+        <Label text="Consulta los voluntarios inscritos en cada oferta"
+               style="-fx-font-size: 13px; -fx-text-fill: #666;"/>
+    </VBox>
+
+    <!-- Selector de oferta -->
+    <HBox alignment="CENTER_LEFT" spacing="12"
+          style="-fx-padding: 0 0 16 0;">
+        <Label text="Selecciona una oferta:"
+               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+        <ComboBox fx:id="ofertaCombo"
+                  prefWidth="380"
+                  promptText="Selecciona una oferta para ver sus inscritos"
+                  onAction="#handleOfertaSeleccionada"
+                  style="-fx-font-size: 13px;"/>
+    </HBox>
+
+    <!-- Etiqueta de resumen de inscritos -->
+    <Label fx:id="resumenLabel"
+           text=""
+           style="-fx-font-size: 13px; -fx-text-fill: #3f51b5;
+                  -fx-font-weight: bold; -fx-padding: 0 0 12 0;"
+           visible="false"/>
+
+    <!-- Mensaje de estado -->
+    <Label fx:id="statusLabel"
+           text="Selecciona una oferta para ver los voluntarios inscritos."
+           style="-fx-font-size: 13px; -fx-text-fill: #666; -fx-padding: 0 0 12 0;"/>
+
+    <!-- Tabla de voluntarios inscritos -->
+    <TableView fx:id="tableInscritos"
+               VBox.vgrow="ALWAYS"
+               style="-fx-background-color: white; -fx-background-radius: 10;">
+        <columns>
+
+            <!-- Columna nombre completo del voluntario -->
+            <TableColumn fx:id="colNombre"
+                         text="Nombre completo" prefWidth="220"/>
+
+            <!-- Columna email del voluntario -->
+            <TableColumn fx:id="colEmail"
+                         text="Correo electronico" prefWidth="220"/>
+
+            <!-- Columna fecha de inscripcion -->
+            <TableColumn fx:id="colFecha"
+                         text="Fecha de inscripcion" prefWidth="150"/>
+
+            <!-- Columna estado de la inscripcion -->
+            <TableColumn fx:id="colEstado"
+                         text="Estado" prefWidth="110"/>
+
+            <!-- Columna certificado emitido -->
+            <TableColumn fx:id="colCertificado"
+                         text="Certificado" prefWidth="100"/>
+
+            <!-- Columna con boton para emitir certificado -->
+            <TableColumn fx:id="colAcciones"
+                         text="Acciones" prefWidth="160"/>
+
+        </columns>
+
+        <!-- Mensaje cuando no hay inscritos -->
+        <placeholder>
+            <Label text="No hay voluntarios inscritos en esta oferta."
+                   style="-fx-text-fill: #999; -fx-font-size: 13px;"/>
+        </placeholder>
+
+    </TableView>
+
+</VBox>

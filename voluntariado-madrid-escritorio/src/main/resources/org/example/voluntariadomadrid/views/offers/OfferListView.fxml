@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.voluntariadomadrid.views.offers.OfferListController"
+      spacing="0"
+      style="-fx-background-color: #f4f6f8; -fx-padding: 32;">
+
+    <!-- Cabecera con titulo y boton de crear -->
+    <HBox alignment="CENTER_LEFT" spacing="16"
+          style="-fx-padding: 0 0 24 0;">
+
+        <VBox spacing="4" HBox.hgrow="ALWAYS">
+            <Label text="Ofertas de voluntariado"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+            <Label text="Gestiona las ofertas publicadas por tu organizacion"
+                   style="-fx-font-size: 13px; -fx-text-fill: #666;"/>
+        </VBox>
+
+        <Button fx:id="btnNuevaOferta"
+                text="+ Nueva oferta"
+                onAction="#handleNuevaOferta"
+                style="-fx-background-color: #3f51b5; -fx-text-fill: white;
+                       -fx-font-size: 13px; -fx-font-weight: bold;
+                       -fx-padding: 10 20; -fx-background-radius: 6;
+                       -fx-cursor: hand;"/>
+    </HBox>
+
+    <!-- Mensaje de estado -->
+    <Label fx:id="statusLabel"
+           text="Cargando ofertas..."
+           style="-fx-font-size: 13px; -fx-text-fill: #666; -fx-padding: 0 0 12 0;"
+           visible="true"/>
+
+    <!-- Tabla de ofertas -->
+    <TableView fx:id="tableOfertas"
+               VBox.vgrow="ALWAYS"
+               style="-fx-background-color: white; -fx-background-radius: 10;">
+        <columns>
+            <TableColumn fx:id="colTitulo" text="Titulo" prefWidth="200"/>
+            <TableColumn fx:id="colCategoria" text="Categoria" prefWidth="120"/>
+            <TableColumn fx:id="colPlazas" text="Plazas" prefWidth="80"/>
+            <TableColumn fx:id="colEstado" text="Estado" prefWidth="100"/>
+            <TableColumn fx:id="colFechaInicio" text="Fecha inicio" prefWidth="120"/>
+            <TableColumn fx:id="colFechaFin" text="Fecha fin" prefWidth="120"/>
+            <TableColumn fx:id="colAcciones" text="Acciones" prefWidth="200"/>
+        </columns>
+        <placeholder>
+            <Label text="No hay ofertas creadas todavia."
+                   style="-fx-text-fill: #999; -fx-font-size: 13px;"/>
+        </placeholder>
+    </TableView>
+
+</VBox>

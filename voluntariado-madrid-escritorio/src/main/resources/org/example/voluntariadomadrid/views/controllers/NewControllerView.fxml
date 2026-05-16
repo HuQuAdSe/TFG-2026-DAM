@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Dialogo para crear un nuevo controlador -->
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.voluntariadomadrid.views.controllers.NewControllerController"
+      spacing="16"
+      style="-fx-background-color: white; -fx-padding: 32;
+             -fx-background-radius: 12; -fx-min-width: 420;">
+
+    <!-- Titulo del formulario -->
+    <Label text="Nuevo controlador"
+           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+
+    <Label text="El controlador podra gestionar ofertas de tu organizacion"
+           wrapText="true"
+           style="-fx-font-size: 13px; -fx-text-fill: #666;"/>
+
+    <Region prefHeight="4"/>
+
+    <!-- Campo nombre -->
+    <VBox spacing="4">
+        <Label text="Nombre completo"
+               style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+        <TextField fx:id="nombreField"
+                   promptText="Nombre Apellidos"
+                   style="-fx-font-size: 14px; -fx-padding: 10;
+                          -fx-background-radius: 6;
+                          -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+    </VBox>
+
+    <!-- Campo email -->
+    <VBox spacing="4">
+        <Label text="Correo electronico"
+               style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+        <TextField fx:id="emailField"
+                   promptText="correo@organizacion.es"
+                   style="-fx-font-size: 14px; -fx-padding: 10;
+                          -fx-background-radius: 6;
+                          -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+    </VBox>
+
+    <!-- Campo contraseña -->
+    <VBox spacing="4">
+        <Label text="Contraseña inicial"
+               style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+        <PasswordField fx:id="passwordField"
+                       promptText="Minimo 6 caracteres"
+                       style="-fx-font-size: 14px; -fx-padding: 10;
+                              -fx-background-radius: 6;
+                              -fx-border-color: #ddd; -fx-border-radius: 6;"/>
+        <Label text="El controlador podra cambiarla despues desde su cuenta"
+               style="-fx-font-size: 12px; -fx-text-fill: #999;"/>
+    </VBox>
+
+    <!-- Mensaje de error -->
+    <Label fx:id="errorLabel"
+           text=""
+           wrapText="true"
+           style="-fx-text-fill: #e53935; -fx-font-size: 13px;"
+           visible="false"/>
+
+    <!-- Botones de accion -->
+    <HBox spacing="12" alignment="CENTER_RIGHT"
+          style="-fx-padding: 8 0 0 0;">
+
+        <Button text="Cancelar"
+                onAction="#handleCancelar"
+                style="-fx-background-color: transparent; -fx-text-fill: #666;
+                       -fx-font-size: 13px; -fx-padding: 10 20;
+                       -fx-border-color: #ddd; -fx-border-radius: 6;
+                       -fx-background-radius: 6; -fx-cursor: hand;"/>
+
+        <Button fx:id="createButton"
+                text="Crear controlador"
+                onAction="#handleCrear"
+                style="-fx-background-color: #3f51b5; -fx-text-fill: white;
+                       -fx-font-size: 13px; -fx-font-weight: bold;
+                       -fx-padding: 10 20; -fx-background-radius: 6;
+                       -fx-cursor: hand;"/>
+    </HBox>
+
+</VBox>

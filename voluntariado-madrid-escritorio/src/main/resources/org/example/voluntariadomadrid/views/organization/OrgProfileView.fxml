@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Vista de perfil y edicion de datos de la organizacion -->
+
+<VBox spacing="0" style="-fx-background-color: #f4f6f8; -fx-padding: 32;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.voluntariadomadrid.views.organization.OrgProfileController">
+
+    <!-- Cabecera -->
+    <VBox spacing="4" style="-fx-padding: 0 0 24 0;">
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;" text="Mi organizacion" />
+        <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="Consulta y edita los datos de tu organizacion" />
+    </VBox>
+
+    <!-- Tarjeta del formulario -->
+    <VBox maxWidth="560" spacing="16" style="-fx-background-color: white;                  -fx-padding: 32;                  -fx-background-radius: 12;                  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);">
+
+        <!-- Seccion informacion no editable -->
+        <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #3f51b5;" text="INFORMACION DEL SISTEMA" />
+
+        <!-- ID de la organizacion (solo lectura) -->
+        <VBox spacing="4">
+            <Label style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;" text="ID de la organizacion" />
+            <TextField fx:id="idField" editable="false" style="-fx-font-size: 13px; -fx-padding: 10;                               -fx-background-radius: 6;                               -fx-border-color: #eee; -fx-border-radius: 6;                               -fx-text-fill: #999; -fx-background-color: #f9f9f9;" />
+        </VBox>
+
+        <!-- Admin de la organizacion (solo lectura) -->
+        <VBox spacing="4">
+            <Label style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Administrador" />
+            <TextField fx:id="adminField" editable="false" style="-fx-font-size: 13px; -fx-padding: 10;                               -fx-background-radius: 6;                               -fx-border-color: #eee; -fx-border-radius: 6;                               -fx-text-fill: #999; -fx-background-color: #f9f9f9;" />
+        </VBox>
+
+        <Region prefHeight="8" />
+
+        <!-- Seccion datos editables -->
+        <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #3f51b5;" text="DATOS EDITABLES" />
+
+        <!-- Nombre de la organizacion -->
+        <VBox spacing="4">
+            <Label style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Nombre de la organizacion (Para visualizar cambios, salir y volver a entrar)" />
+            <TextField fx:id="nombreField" style="-fx-font-size: 14px; -fx-padding: 10;                               -fx-background-radius: 6;                               -fx-border-color: #ddd; -fx-border-radius: 6;" />
+        </VBox>
+
+        <!-- Descripcion de la organizacion -->
+        <VBox spacing="4">
+            <Label style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Descripcion" />
+            <TextArea fx:id="descripcionField" prefRowCount="4" style="-fx-font-size: 14px; -fx-padding: 10;                              -fx-background-radius: 6;                              -fx-border-color: #ddd; -fx-border-radius: 6;" wrapText="true" />
+        </VBox>
+
+        <!-- Mensaje de exito -->
+        <Label fx:id="successLabel" style="-fx-text-fill: #43a047; -fx-font-size: 13px;" text="" visible="false" />
+
+        <!-- Mensaje de error -->
+        <Label fx:id="errorLabel" style="-fx-text-fill: #e53935; -fx-font-size: 13px;" text="" visible="false" wrapText="true" />
+
+        <!-- Botones -->
+        <HBox alignment="CENTER_RIGHT" spacing="12" style="-fx-padding: 8 0 0 0;">
+
+            <!-- Boton para descartar los cambios y volver a los datos originales -->
+            <Button onAction="#handleDescartar" style="-fx-background-color: transparent; -fx-text-fill: #666;                            -fx-font-size: 13px; -fx-padding: 10 20;                            -fx-border-color: #ddd; -fx-border-radius: 6;                            -fx-background-radius: 6; -fx-cursor: hand;" text="Descartar cambios" />
+
+            <!-- Boton para guardar los cambios en Firestore -->
+            <Button fx:id="saveButton" onAction="#handleGuardar" style="-fx-background-color: #3f51b5; -fx-text-fill: white;                            -fx-font-size: 13px; -fx-font-weight: bold;                            -fx-padding: 10 20; -fx-background-radius: 6;                            -fx-cursor: hand;" text="Guardar cambios" />
+        </HBox>
+
+    </VBox>
+
+</VBox>
