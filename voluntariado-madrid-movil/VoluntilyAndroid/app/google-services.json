@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "135125509526",
+    "project_id": "voluntariado-madrid",
+    "storage_bucket": "voluntariado-madrid.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135125509526:android:d6932fa7fe1870457aa9b7",
+        "android_client_info": {
+          "package_name": "com.voluntariado.madrid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgX8iVWfdBFF-lKNn7hPd08cw0AVvXJCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
